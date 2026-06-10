@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Agen Properti</title>
+    <style>
+        /* --- Variabel Warna - Earth Tone --- */
+        :root {
+            --color-primary-dark: #4A3B3B; /* Coklat tua */
+            --color-primary-light: #A38C7F; /* Coklat muda */
+            --color-secondary: #D4C6BC;    /* Krem pucat */
+            --color-accent: #8C7F72;       /* Coklat zaitun/debu */
+            --color-text-light: #F5F5DC;   /* Krem sangat terang untuk teks di overlay */
+            --color-text-dark: #333;       /* Teks gelap untuk konten */
+        }
+
+        /* --- Reset CSS Dasar & Box Sizing --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif; /* Font elegan */
+            line-height: 1.6;
+            color: var(--color-text-dark);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif; /* Font judul yang lebih berkarakter */
+            margin-bottom: 0.8em;
+        }
+
+        a {
+            color: var(--color-primary-light);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Tinggi penuh layar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--color-primary-dark); /* Fallback */
+            overflow: hidden;
+        }
+
+        /* Opsi 1: Menggunakan background-image pada section (lebih sederhana) */
+        /* Pastikan Anda mengganti 'path/to/your/video.mp4' dengan path video Anda */
+        .hero-section {
+             background-image: url('path/to/your/video.mp4'); /* !!! GANTI DENGAN PATH VIDEO ANDA !!! */
+             background-size: cover;
+             background-position: center;
+             background-repeat: no-repeat;
+        }
+
+        /* Opsi 2: Menggunakan tag <video> di HTML (membutuhkan sedikit penyesuaian di sini)
+           Jika menggunakan tag <video>, hapus background-image dari .hero-section di atas
+           dan gunakan kode HTML `<video>` yang diberikan di bawah ini.
+        */
+        .hero-background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Overlay gelap untuk kontras */
+            z-index: 2; /* Di atas video jika menggunakan tag <video> */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3; /* Di atas overlay */
+            color: var(--color-text-light);
+            padding: 20px;
+        }
+
+        .hero-content .property-address {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        /* --- Navigasi Jumplink Tetap --- */
+        .fixed-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-primary-dark);
+            color: var(--color-text-light);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-decoration: none; /* Pastikan tidak ada underline */
+        }
+
+        .nav-link:hover {
+            background-color: var(--color-accent);
+            color: var(--color-text-light);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- Konten Section Umum --- */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .content-section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--color-primary-dark);
+        }
+
+        /* --- Profil Agen Section --- */
+        #profil-agen-section { /* Latar belakang warna solid */
+            background-color: var(--color-secondary);
+        }
+        .profil-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .agent-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--color-primary-light);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .agent-details {
+            max-width: 600px;
+        }
+
+        .agent-details h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5em;
+            color: var(--color-primary-dark);
+        }
+
+        .agent-details p {
+            font-size: 1.1rem;
+            margin-bottom: 0.7em;
+            color: var(--color-text-dark);
+        }
+
+        .agent-details a {
+            color: var(--color-primary-light);
+            font-weight: bold;
+        }
+
+        /* --- Form EOI Section --- */
+        #eoi-form-section {
+            background-color: var(--color-accent); /* Warna latar berbeda untuk formulir */
+        }
+
+        #eoi-form-section h2 {
+            color: var(--color-text-light);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--color-text-light);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--color-secondary);
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: var(--color-secondary);
+            color: var(--color-text-dark);
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            background-color: var(--color-primary-dark);
+            color: var(--color-text-light);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        /* --- Responsivitas --- */
+        @media (max-width: 768px) {
+            .hero-content .property-address {
+                font-size: 2rem;
+            }
+
+            .fixed-nav {
+                right: 15px;
+                top: 85%;
+                flex-direction: row;
+                width: fit-content;
+                margin: 0 auto;
+                left: 0;
+                right: 0;
+                transform: none;
+                background-color: rgba(74, 59, 59, 0.8);
+                padding: 10px 15px;
+                border-radius: 20px;
+                gap: 20px;
+            }
+
+            .nav-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .content-section h2 {
+                font-size: 2.2rem;
+            }
+
+            .profil-content {
+                flex-direction: column;
+            }
+
+            .agent-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 10px;
+            }
+
+            .btn-submit {
+                padding: 12px 15px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content .property-address {
+                font-size: 1.8rem;
+            }
+
+            .fixed-nav {
+                top: 90%;
+                padding: 8px 12px;
+            }
+
+            .nav-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+
+            .content-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+    </style>
+    <!-- Font Awesome untuk ikon jumplink -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigasi Jumplink Tetap di Kanan -->
+    <nav class="fixed-nav">
+        <a href="#hero-section" class="nav-link" title="Ke Hero Section">
+            <i class="fas fa-home"></i>
+        </a>
+        <a href="#profil-agen-section" class="nav-link" title="Ke Profil Agen">
+            <i class="fas fa-user-tie"></i>
+        </a>
+        <a href="#eoi-form-section" class="nav-link" title="Ke Formulir EOI">
+            <i class="fas fa-envelope-open-text"></i>
+        </a>
+    </nav>
+
+    <!-- Bagian Hero Section -->
+    <section id="hero-section" class="hero-section">
+        <!-- Opsi 1: Menggunakan background-image pada section (lebih sederhana) -->
+        <!-- Pastikan Anda mengganti 'path/to/your/video.mp4' dengan path video Anda -->
+        <!-- Jika menggunakan opsi ini, hapus tag <video> di bawah -->
+        <div class="hero-video-overlay"></div>
+        <div class="hero-content">
+            <p class="property-address">Jl. Mawar No. 123, Jakarta Selatan</p>
+        </div>
+
+        <!-- Opsi 2: Menggunakan tag <video> -->
+        <!-- Jika menggunakan opsi ini, HAPUS CSS 'background-image' dari .hero-section di atas
+             dan pastikan class 'hero-section' HARUS memposisikan video di belakangnya -->
+        <!--
+        <video autoplay loop muted playsinline class="hero-background-video">
+            <source src="path/to/your/video.mp4" type="video/mp4">
+            Browser Anda tidak mendukung tag video.
+        </video>
+        <div class="hero-video-overlay"></div>
+        <div class="hero-content">
+            <p class="property-address">Jl. Mawar No. 123, Jakarta Selatan</p>
+        </div>
+        -->
+    </section>
+
+    <!-- Bagian Profil Agen, Kontak, & Alamat Kantor -->
+    <section id="profil-agen-section" class="content-section">
+        <div class="container">
+            <h2>Profil Agen</h2>
+            <div class="profil-content">
+                <img src="placeholder-agent-photo.jpg" alt="Foto Agen" class="agent-photo"> <!-- GANTI DENGAN FOTO ANDA -->
+                <div class="agent-details">
+                    <h3>Nama Anda</h3>
+                    <p>Agen Properti Spesialis Mewah</p>
+                    <p><strong>Hubungi:</strong> <a href="tel:+6281234567890">+62 812 345 67890</a></p> <!-- GANTI DENGAN NOMOR ANDA -->
+                    <p><strong>Kantor:</strong> Jl. Sudirman No. 45, Lantai 10, Jakarta Pusat</p> <!-- GANTI DENGAN ALAMAT KANTOR -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Formulir Express of Interest (EOI) -->
+    <section id="eoi-form-section" class="content-section">
+        <div class="container">
+            <h2>Express of Interest</h2>
+            <form id="eoi-form">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap:</label>
+                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap Anda">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Masukkan alamat email Anda">
+                </div>
+                <div class="form-group">
+                    <label for="telepon">Nomor Telepon:</label>
+                    <input type="tel" id="telepon" name="telepon" required placeholder="Masukkan nomor telepon Anda">
+                </div>
+                <div class="form-group">
+                    <label for="pesan">Pesan:</label>
+                    <textarea id="pesan" name="pesan" rows="4" placeholder="Sampaikan pesan Anda..."></textarea>
+                </div>
+                <!-- Tambahkan field lain jika diperlukan di sini -->
+                <button type="submit" class="btn-submit">Kirim Minat</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Hentikan perilaku default klik
+
+                    const targetId = this.getAttribute('href'); // Ambil ID target dari atribut href
+                    const targetElement = document.querySelector(targetId); // Cari elemen target
+
+                    if (targetElement) {
+                        // Hitung posisi scroll untuk smooth scrolling
+                        // Termasuk tinggi navigasi tetap + sedikit padding/margin jika diinginkan
+                        const fixedNav = document.querySelector('.fixed-nav');
+                        const fixedNavHeight = fixedNav ? fixedNav.offsetHeight : 0;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                        // Kurangi dengan tinggi nav tetap dan sedikit offset agar konten tidak mentok di bawah nav
+                        const offsetPosition = elementPosition - fixedNavHeight - 20;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth' // Aktifkan scroll smooth
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
