@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Agen Properti</title>
+    <title>Balmain Residence - Luxury Property</title>
     <style>
-        /* --- Variabel Warna - Earth Tone --- */
+        /* --- VARIABEL WARNA PASTEL --- */
         :root {
-            --color-primary-dark: #4A3B3B; /* Coklat tua */
-            --color-primary-light: #A38C7F; /* Coklat muda */
-            --color-secondary: #D4C6BC;    /* Krem pucat */
-            --color-accent: #8C7F72;       /* Coklat zaitun/debu */
-            --color-text-light: #F5F5DC;   /* Krem sangat terang untuk teks di overlay */
-            --color-text-dark: #333;       /* Teks gelap untuk konten */
+            --bg-primary: #FFFDF8;        /* Putih hangat seperti kertas */
+            --bg-secondary: #F5F0EB;       /* Krem pastel */
+            --text-primary: #3D3A36;       /* Coklat keabu-abuan */
+            --text-secondary: #7A6F64;      /* Abu-abu hangat */
+            --accent-pink: #F3D9DC;         /* Pink pastel */
+            --accent-mint: #D7E8E0;         /* Mint pastel */
+            --accent-lavender: #E3DFF2;     /* Lavender pastel */
+            --accent-peach: #FBE9E0;        /* Peach pastel */
+            --accent-sage: #DDE8DF;         /* Sage green */
+            --gold-soft: #D4C5A9;           /* Soft gold untuk aksen minor */
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        /* --- Reset CSS Dasar & Box Sizing --- */
         * {
             margin: 0;
             padding: 0;
@@ -23,429 +30,543 @@
         }
 
         body {
-            font-family: 'Merriweather', serif; /* Font elegan */
+            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: var(--color-text-dark);
+            scroll-behavior: smooth;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif; /* Font judul yang lebih berkarakter */
-            margin-bottom: 0.8em;
-        }
-
-        a {
-            color: var(--color-primary-light);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
+        h1, h2, h3, h4, .logo, .nav-link {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
         }
 
         .container {
-            width: 90%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 0;
+            padding: 0 24px;
         }
 
-        /* --- Hero Section --- */
-        .hero-section {
-            position: relative;
+        /* --- NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 100vh; /* Tinggi penuh layar */
+            background: rgba(255, 253, 248, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-secondary);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            background-color: var(--color-primary-dark); /* Fallback */
-            overflow: hidden;
-        }
-
-        /* Opsi 1: Menggunakan background-image pada section (lebih sederhana) */
-        /* Pastikan Anda mengganti 'path/to/your/video.mp4' dengan path video Anda */
-        .hero-section {
-             background-image: url('path/to/your/video.mp4'); /* !!! GANTI DENGAN PATH VIDEO ANDA !!! */
-             background-size: cover;
-             background-position: center;
-             background-repeat: no-repeat;
-        }
-
-        /* Opsi 2: Menggunakan tag <video> di HTML (membutuhkan sedikit penyesuaian di sini)
-           Jika menggunakan tag <video>, hapus background-image dari .hero-section di atas
-           dan gunakan kode HTML `<video>` yang diberikan di bawah ini.
-        */
-        .hero-background-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .hero-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Overlay gelap untuk kontras */
-            z-index: 2; /* Di atas video jika menggunakan tag <video> */
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding-top: 80px;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 3; /* Di atas overlay */
-            color: var(--color-text-light);
-            padding: 20px;
+            max-width: 800px;
+            padding: 40px;
         }
 
-        .hero-content .property-address {
-            font-size: 2.5rem;
+        .hero-badge {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
             font-family: 'Playfair Display', serif;
-            font-weight: bold;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
         }
 
-        /* --- Navigasi Jumplink Tetap --- */
-        .fixed-nav {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text-primary);
         }
 
-        .nav-link {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 50px;
-            background-color: var(--color-primary-dark);
-            color: var(--color-text-light);
-            border-radius: 50%;
-            font-size: 1.5rem;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            text-decoration: none; /* Pastikan tidak ada underline */
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .nav-link:hover {
-            background-color: var(--color-accent);
-            color: var(--color-text-light);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--text-primary);
+            font-family: 'Playfair Display', serif;
         }
 
-        /* --- Konten Section Umum --- */
-        .content-section {
-            padding: 60px 0;
+        .btn:hover {
+            background: transparent;
+            color: var(--text-primary);
+            transform: translateY(-2px);
         }
 
-        .content-section h2 {
+        /* --- ABOUT SECTION --- */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
             text-align: center;
             font-size: 2.8rem;
-            color: var(--color-primary-dark);
+            margin-bottom: 50px;
+            color: var(--text-primary);
         }
 
-        /* --- Profil Agen Section --- */
-        #profil-agen-section { /* Latar belakang warna solid */
-            background-color: var(--color-secondary);
-        }
-        .profil-content {
-            display: flex;
-            flex-direction: column;
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
-            gap: 30px;
-            text-align: center;
         }
 
-        .agent-photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--color-primary-light);
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        .agent-details {
-            max-width: 600px;
-        }
-
-        .agent-details h3 {
-            font-size: 2rem;
-            margin-bottom: 0.5em;
-            color: var(--color-primary-dark);
-        }
-
-        .agent-details p {
+        .about-text p {
             font-size: 1.1rem;
-            margin-bottom: 0.7em;
-            color: var(--color-text-dark);
+            color: var(--text-secondary);
+            margin-bottom: 20px;
         }
 
-        .agent-details a {
-            color: var(--color-primary-light);
-            font-weight: bold;
+        .about-text .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: var(--text-primary);
         }
 
-        /* --- Form EOI Section --- */
-        #eoi-form-section {
-            background-color: var(--color-accent); /* Warna latar berbeda untuk formulir */
+        .about-image {
+            background: var(--accent-peach);
+            border-radius: 30px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
         }
 
-        #eoi-form-section h2 {
-            color: var(--color-text-light);
+        .about-image .placeholder {
+            font-size: 6rem;
+            opacity: 0.5;
+        }
+
+        /* --- FEATURES GRID --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card:nth-child(1) .feature-icon { background: var(--accent-peach); width: 70px; height: 70px; line-height: 70px; border-radius: 50%; margin: 0 auto 20px; }
+        .feature-card:nth-child(2) .feature-icon { background: var(--accent-mint); width: 70px; height: 70px; line-height: 70px; border-radius: 50%; margin: 0 auto 20px; }
+        .feature-card:nth-child(3) .feature-icon { background: var(--accent-lavender); width: 70px; height: 70px; line-height: 70px; border-radius: 50%; margin: 0 auto 20px; }
+        .feature-card:nth-child(4) .feature-icon { background: var(--accent-sage); width: 70px; height: 70px; line-height: 70px; border-radius: 50%; margin: 0 auto 20px; }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        /* --- GALLERY SECTION --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item .placeholder {
+            font-size: 3rem;
+            opacity: 0.4;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .placeholder {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:nth-child(1) { background: var(--accent-peach); }
+        .gallery-item:nth-child(2) { background: var(--accent-mint); }
+        .gallery-item:nth-child(3) { background: var(--accent-lavender); }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            background: var(--bg-secondary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail .icon {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
         }
 
         .form-group {
             margin-bottom: 20px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: var(--color-text-light);
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"],
+        .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--color-secondary);
-            border-radius: 5px;
-            font-size: 1rem;
-            background-color: var(--color-secondary);
-            color: var(--color-text-dark);
+            padding: 14px 18px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
             font-family: inherit;
+            font-size: 1rem;
+            background: var(--white);
+            transition: all 0.3s ease;
         }
 
-        .form-group textarea {
-            resize: vertical;
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--text-secondary);
+            box-shadow: 0 0 0 3px rgba(122, 111, 100, 0.1);
         }
 
         .btn-submit {
-            display: block;
             width: 100%;
-            padding: 15px 20px;
-            background-color: var(--color-primary-dark);
-            color: var(--color-text-light);
+            padding: 14px;
+            background: var(--text-primary);
+            color: var(--white);
             border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
         }
 
         .btn-submit:hover {
-            background-color: var(--color-accent);
+            background: var(--text-secondary);
             transform: translateY(-2px);
         }
 
-        /* --- Responsivitas --- */
+        /* --- FOOTER --- */
+        .footer {
+            background: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero-content .property-address {
-                font-size: 2rem;
+            .nav-links {
+                display: none;
             }
 
-            .fixed-nav {
-                right: 15px;
-                top: 85%;
-                flex-direction: row;
-                width: fit-content;
-                margin: 0 auto;
-                left: 0;
-                right: 0;
-                transform: none;
-                background-color: rgba(74, 59, 59, 0.8);
-                padding: 10px 15px;
-                border-radius: 20px;
-                gap: 20px;
+            .hero h1 {
+                font-size: 2.8rem;
             }
 
-            .nav-link {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
-
-            .content-section h2 {
+            .section-title {
                 font-size: 2.2rem;
             }
 
-            .profil-content {
-                flex-direction: column;
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
 
-            .agent-photo {
-                width: 150px;
-                height: 150px;
+            .features-grid {
+                grid-template-columns: 1fr;
             }
 
-            .form-group input,
-            .form-group textarea {
-                padding: 10px;
-            }
-
-            .btn-submit {
-                padding: 12px 15px;
-                font-size: 1.1rem;
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
         }
-
-        @media (max-width: 480px) {
-            .hero-content .property-address {
-                font-size: 1.8rem;
-            }
-
-            .fixed-nav {
-                top: 90%;
-                padding: 8px 12px;
-            }
-
-            .nav-link {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
-            .content-section {
-                padding-top: 40px;
-                padding-bottom: 40px;
-            }
-
-            .content-section h2 {
-                font-size: 1.8rem;
-            }
-        }
-
     </style>
-    <!-- Font Awesome untuk ikon jumplink -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Font Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Navigasi Jumplink Tetap di Kanan -->
-    <nav class="fixed-nav">
-        <a href="#hero-section" class="nav-link" title="Ke Hero Section">
-            <i class="fas fa-home"></i>
-        </a>
-        <a href="#profil-agen-section" class="nav-link" title="Ke Profil Agen">
-            <i class="fas fa-user-tie"></i>
-        </a>
-        <a href="#eoi-form-section" class="nav-link" title="Ke Formulir EOI">
-            <i class="fas fa-envelope-open-text"></i>
-        </a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">BALMAIN<span> Residence</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <!-- Bagian Hero Section -->
-    <section id="hero-section" class="hero-section">
-        <!-- Opsi 1: Menggunakan background-image pada section (lebih sederhana) -->
-        <!-- Pastikan Anda mengganti 'path/to/your/video.mp4' dengan path video Anda -->
-        <!-- Jika menggunakan opsi ini, hapus tag <video> di bawah -->
-        <div class="hero-video-overlay"></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
         <div class="hero-content">
-            <p class="property-address">Jl. Mawar No. 123, Jakarta Selatan</p>
+            <div class="hero-badge">Since 2024</div>
+            <h1>Where Luxury<br>Meets Serenity</h1>
+            <p>Experience the pinnacle of refined living at Balmain Residence. A sanctuary crafted for those who appreciate timeless elegance.</p>
+            <a href="#contact" class="btn">Inquire Now</a>
         </div>
-
-        <!-- Opsi 2: Menggunakan tag <video> -->
-        <!-- Jika menggunakan opsi ini, HAPUS CSS 'background-image' dari .hero-section di atas
-             dan pastikan class 'hero-section' HARUS memposisikan video di belakangnya -->
-        <!--
-        <video autoplay loop muted playsinline class="hero-background-video">
-            <source src="path/to/your/video.mp4" type="video/mp4">
-            Browser Anda tidak mendukung tag video.
-        </video>
-        <div class="hero-video-overlay"></div>
-        <div class="hero-content">
-            <p class="property-address">Jl. Mawar No. 123, Jakarta Selatan</p>
-        </div>
-        -->
     </section>
 
-    <!-- Bagian Profil Agen, Kontak, & Alamat Kantor -->
-    <section id="profil-agen-section" class="content-section">
+    <!-- About Section -->
+    <section id="about" class="section">
         <div class="container">
-            <h2>Profil Agen</h2>
-            <div class="profil-content">
-                <img src="placeholder-agent-photo.jpg" alt="Foto Agen" class="agent-photo"> <!-- GANTI DENGAN FOTO ANDA -->
-                <div class="agent-details">
-                    <h3>Nama Anda</h3>
-                    <p>Agen Properti Spesialis Mewah</p>
-                    <p><strong>Hubungi:</strong> <a href="tel:+6281234567890">+62 812 345 67890</a></p> <!-- GANTI DENGAN NOMOR ANDA -->
-                    <p><strong>Kantor:</strong> Jl. Sudirman No. 45, Lantai 10, Jakarta Pusat</p> <!-- GANTI DENGAN ALAMAT KANTOR -->
+            <h2 class="section-title">About Balmain</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Nestled in the heart of Rotodia's most prestigious neighborhood, Balmain Residence represents the perfect harmony between architectural excellence and natural beauty.</p>
+                    <p>Every detail has been meticulously curated - from the imported marble finishes to the panoramic city views. Here, luxury isn't just seen; it's felt in every moment of your daily life.</p>
+                    <p>Designed by world-renowned architects, Balmain offers an exclusive collection of residences that redefine modern living while maintaining timeless sophistication.</p>
+                    <div class="signature">— Balmain Heritage</div>
+                </div>
+                <div class="about-image">
+                    <div class="placeholder">🪴</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Bagian Formulir Express of Interest (EOI) -->
-    <section id="eoi-form-section" class="content-section">
+    <!-- Features Section -->
+    <section id="features" class="section" style="background: var(--bg-secondary);">
         <div class="container">
-            <h2>Express of Interest</h2>
-            <form id="eoi-form">
-                <div class="form-group">
-                    <label for="nama">Nama Lengkap:</label>
-                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap Anda">
+            <h2 class="section-title">Premium Amenities</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏊</div>
+                    <h3>Infinity Pool</h3>
+                    <p>Overlooking the skyline, our heated infinity pool offers an unparalleled swimming experience.</p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required placeholder="Masukkan alamat email Anda">
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>Wellness Center</h3>
+                    <p>State-of-the-art fitness facility with personal training and spa treatment rooms.</p>
                 </div>
-                <div class="form-group">
-                    <label for="telepon">Nomor Telepon:</label>
-                    <input type="tel" id="telepon" name="telepon" required placeholder="Masukkan nomor telepon Anda">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>24/7 Security</h3>
+                    <p>Round-the-clock surveillance and dedicated concierge for your complete peace of mind.</p>
                 </div>
-                <div class="form-group">
-                    <label for="pesan">Pesan:</label>
-                    <textarea id="pesan" name="pesan" rows="4" placeholder="Sampaikan pesan Anda..."></textarea>
+                <div class="feature-card">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Private Parking</h3>
+                    <p>Secure, designated parking spaces with EV charging stations for residents.</p>
                 </div>
-                <!-- Tambahkan field lain jika diperlukan di sini -->
-                <button type="submit" class="btn-submit">Kirim Minat</button>
-            </form>
+            </div>
         </div>
     </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">Visual Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="placeholder">🏡</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="placeholder">🌿</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="placeholder">✨</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Hentikan perilaku default klik
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">Request Information</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Our team is ready to assist you with any inquiries about Balmain Residence.</p>
+                    <div class="contact-detail">
+                        <div class="icon">📍</div>
+                        <div>Balmain Avenue, Rotodia 12345</div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="icon">📞</div>
+                        <div>+62 812 3456 7890</div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="icon">✉️</div>
+                        <div>hello@balmain.rotodia.dev</div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" placeholder="Your message..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-                    const targetId = this.getAttribute('href'); // Ambil ID target dari atribut href
-                    const targetElement = document.querySelector(targetId); // Cari elemen target
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">X</a>
+        </div>
+        <p>© 2026 Balmain Residence. All rights reserved. Designed with 🤍 for timeless elegance.</p>
+    </footer>
 
-                    if (targetElement) {
-                        // Hitung posisi scroll untuk smooth scrolling
-                        // Termasuk tinggi navigasi tetap + sedikit padding/margin jika diinginkan
-                        const fixedNav = document.querySelector('.fixed-nav');
-                        const fixedNavHeight = fixedNav ? fixedNav.offsetHeight : 0;
-                        const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-                        // Kurangi dengan tinggi nav tetap dan sedikit offset agar konten tidak mentok di bawah nav
-                        const offsetPosition = elementPosition - fixedNavHeight - 20;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth' // Aktifkan scroll smooth
-                        });
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
