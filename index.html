@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balmain Residence - Let the wild in. Find your Base.</title>
+    <title>Balmain Residence - Hero Section</title>
     <style>
-        /* --- Base Habitation Inspired --- */
         * {
             margin: 0;
             padding: 0;
@@ -17,18 +16,133 @@
             background-color: #FFFFFF;
             color: #1A1A1A;
             line-height: 1.5;
-            scroll-behavior: smooth;
         }
 
-        /* Container like Base Habitation - wide, breathable */
-        .container {
-            max-width: 1440px;
-            margin: 0 auto;
+        /* --- HERO SECTION (FULL VIEWPORT) --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Video background */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Overlay gelap 25% */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            z-index: 2;
+        }
+
+        /* Konten teks di kiri */
+        .hero-content {
+            position: absolute;
+            z-index: 3;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
             padding: 0 80px;
+            max-width: 700px;
+            color: #FFFFFF;
         }
 
-        /* Typography - Clean, layered */
-        .section-label {
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        /* --- JUMPLINK FIXED (KANAN TENGAH) --- */
+        .jumplink {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .jumplink a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .jumplink a:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* --- SECTION UMUM --- */
+        .section {
+            padding: 100px 80px;
+            background-color: #FFFFFF;
+        }
+
+        .section-dark {
+            background-color: #F8F8F8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- PROFIL AGEN SECTION --- */
+        .agen-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .agen-foto {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #E8E3DB;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #8B8B8B;
+        }
+
+        .agen-info h3 {
             font-size: 0.75rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
@@ -37,231 +151,72 @@
             font-weight: 500;
         }
 
-        h1 {
-            font-size: 4.5rem;
-            font-weight: 500;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-            color: #1A1A1A;
-        }
-
-        h2 {
+        .agen-info h2 {
             font-size: 2.8rem;
             font-weight: 500;
             line-height: 1.2;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-        }
-
-        h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .lead-text {
-            font-size: 1.125rem;
-            color: #4A4A4A;
-            line-height: 1.6;
-            max-width: 600px;
-        }
-
-        /* Buttons - Minimal, border, subtle */
-        .btn-primary {
-            display: inline-block;
-            background-color: #1A1A1A;
-            color: white;
-            padding: 0.875rem 2rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid #1A1A1A;
-        }
-
-        .btn-primary:hover {
-            background-color: transparent;
+            margin-bottom: 0.5rem;
             color: #1A1A1A;
         }
 
-        .btn-outline {
-            display: inline-block;
-            background-color: transparent;
-            color: #1A1A1A;
-            padding: 0.875rem 2rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid #1A1A1A;
-        }
-
-        .btn-outline:hover {
-            background-color: #1A1A1A;
-            color: white;
-        }
-
-        /* Navigation - Clean, transparent, sticky */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            padding: 1.25rem 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            color: #1A1A1A;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #1A1A1A;
+        .agen-jabatan {
             font-size: 0.875rem;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.6;
-        }
-
-        /* Hero Section - Two column, spacious */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 0 80px;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-image {
-            background-color: #E8E3DB;
-            height: 550px;
-            border-radius: 24px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%239E8F7E"><path d="M12 3L3 9l9 6 9-6-9-6zM3 15l9 6 9-6"/></svg>');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 80px;
-            background-blend-mode: overlay;
-        }
-
-        /* Section spacing - generous, breathing */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-light {
-            background-color: #FAFAFA;
-        }
-
-        .section-white {
-            background-color: #FFFFFF;
-        }
-
-        /* 3-Column Grid for Features */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .feature-item {
-            text-align: left;
-        }
-
-        .feature-icon {
-            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #666;
             margin-bottom: 1.5rem;
         }
 
-        .feature-item p {
+        .agen-quote {
+            font-size: 1.125rem;
+            line-height: 1.6;
             color: #4A4A4A;
-            font-size: 0.9375rem;
-            line-height: 1.5;
+            font-style: italic;
+            margin-bottom: 2rem;
+            border-left: 3px solid #1A1A1A;
+            padding-left: 20px;
         }
 
-        /* 2-Column Alternating Grid */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+        .agen-kontak {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .kontak-item {
+            display: flex;
             align-items: center;
+            gap: 10px;
+            font-size: 0.9375rem;
+            color: #1A1A1A;
+            text-decoration: none;
         }
 
-        .image-placeholder {
-            background-color: #E8E3DB;
-            height: 450px;
-            border-radius: 24px;
+        .kontak-item:hover {
+            text-decoration: underline;
         }
 
-        /* Quote / Highlight section */
-        .highlight-section {
-            background-color: #F5F2EF;
-            text-align: center;
-            padding: 80px 0;
-        }
-
-        .highlight-section h2 {
-            max-width: 800px;
-            margin: 0 auto 1rem;
-        }
-
-        /* Gallery Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .gallery-item {
-            background-color: #E8E3DB;
-            height: 320px;
-            border-radius: 20px;
-        }
-
-        /* Form Section - Centered, minimal */
+        /* --- FORM SECTION --- */
         .form-container {
-            max-width: 580px;
+            max-width: 600px;
             margin: 0 auto;
+        }
+
+        .form-container h2 {
             text-align: center;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-container > p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
         }
 
         .form-group {
             margin-bottom: 1.25rem;
-            text-align: left;
         }
 
         .form-group input,
@@ -281,264 +236,167 @@
             border-color: #1A1A1A;
         }
 
-        /* Footer */
-        .footer {
+        button {
+            width: 100%;
+            padding: 1rem;
             background-color: #1A1A1A;
-            color: #CCCCCC;
-            padding: 60px 0 40px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-logo {
-            font-size: 1.25rem;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 1rem;
             font-weight: 500;
-            margin-bottom: 1rem;
-            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .footer-links h4 {
-            color: white;
-            font-size: 0.875rem;
-            margin-bottom: 1.25rem;
+        button:hover {
+            background-color: #333;
         }
 
-        .footer-links a {
-            display: block;
-            color: #999;
-            text-decoration: none;
-            font-size: 0.875rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.75rem;
-        }
-
-        /* Responsive */
+        /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
-            .container, .nav-container {
+            .hero-content {
                 padding: 0 40px;
             }
-            h1 { font-size: 3.5rem; }
-            h2 { font-size: 2.2rem; }
-            .grid-3, .gallery-grid {
-                gap: 1.5rem;
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .section {
+                padding: 60px 40px;
+            }
+            .agen-grid {
+                grid-template-columns: 200px 1fr;
+                gap: 40px;
             }
         }
 
         @media (max-width: 768px) {
-            .container, .nav-container {
+            .hero-content {
                 padding: 0 24px;
             }
-            .nav-links {
-                display: none;
+            .hero-content h1 {
+                font-size: 2.2rem;
             }
-            .hero-grid, .grid-2, .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .hero-content p {
+                font-size: 0.9375rem;
             }
-            .hero-image {
-                height: 350px;
+            .jumplink {
+                right: 16px;
             }
-            .grid-3, .gallery-grid {
-                grid-template-columns: 1fr;
+            .jumplink a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
             .section {
-                padding: 60px 0;
+                padding: 40px 24px;
             }
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
+            .agen-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .agen-foto {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+            .agen-info {
+                text-align: center;
+            }
+            .agen-quote {
+                text-align: left;
+            }
+            .agen-kontak {
+                justify-content: center;
+            }
+            .form-container h2 {
+                font-size: 1.6rem;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">BALMAIN</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div>
-                    <div class="section-label">Balmain Residence</div>
-                    <h1>Let the wild in.<br>Find your Base.</h1>
-                    <p class="lead-text" style="margin-bottom: 2rem;">Luxury redefined. A sanctuary where modern elegance meets natural serenity.</p>
-                    <a href="#contact" class="btn-primary">Inquire Now</a>
-                </div>
-                <div class="hero-image"></div>
-            </div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <!-- Video: switch desktop/mobile -->
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source media="(min-width: 769px)" src="public/hero-desktop.mp4" type="video/mp4">
+            <source media="(max-width: 768px)" src="public/hero-mobile.mp4" type="video/mp4">
+            <source src="public/hero-desktop.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Dream big,<br>live simple.</h1>
+            <p>Balmain Residence — a sanctuary crafted for those who appreciate timeless elegance and natural harmony.</p>
         </div>
     </section>
 
-    <section id="about" class="section section-light">
-        <div class="container">
-            <div class="grid-2">
-                <div>
-                    <div class="section-label">Our Philosophy</div>
-                    <h2>Dream big.<br>Live simple.</h2>
-                    <p class="lead-text">We believe in doing a lot with a little. A return to the basics for simpler, better living.</p>
-                    <p style="margin-top: 1.5rem; color: #4A4A4A;">Balmain Residence represents the perfect harmony between architectural excellence and natural beauty. Every detail curated, from imported marble finishes to panoramic city views.</p>
-                </div>
-                <div class="image-placeholder"></div>
-            </div>
-        </div>
-    </section>
+    <!-- JUMPLINK FIXED (KANAN TENGAH) -->
+    <div class="jumplink">
+        <a href="#agen-section" title="Profil Agen">👤</a>
+        <a href="#form-section" title="Formulir Kontak">✉️</a>
+    </div>
 
-    <section id="features" class="section section-white">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <div class="section-label">Premium Amenities</div>
-                <h2>Your space, your story.</h2>
+    <!-- SECTION 1: PROFIL AGEN -->
+    <section id="agen-section" class="section">
+        <div class="container agen-grid">
+            <div class="agen-foto">
+                👤
             </div>
-            <div class="grid-3">
-                <div class="feature-item">
-                    <div class="feature-icon">🏊</div>
-                    <h3>Infinity Pool</h3>
-                    <p>Overlooking the skyline. Heated, with panoramic views.</p>
+            <div class="agen-info">
+                <h3>Expert Guidance.</h3>
+                <h2>John Smith</h2>
+                <div class="agen-jabatan">ELITE PERFORMER AT INTERNATIONAL REAL ESTATE AGENCY</div>
+                <div class="agen-quote">
+                    "Real estate is not just about transactions; it's about matching a legacy with its next custodian."
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">💪</div>
-                    <h3>Wellness Center</h3>
-                    <p>State-of-the-art gym and spa treatment rooms.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>24/7 Security</h3>
-                    <p>Round-the-clock surveillance and dedicated concierge.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🌿</div>
-                    <h3>Private Garden</h3>
-                    <p>Landscaped gardens with native plants.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🚗</div>
-                    <h3>Private Parking</h3>
-                    <p>Secure, designated spaces with EV charging.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🏛️</div>
-                    <h3>Concierge Service</h3>
-                    <p>Dedicated service to cater to your every need.</p>
+                <div class="agen-kontak">
+                    <a href="tel:+6281234567890" class="kontak-item">📞 +62 812 3456 7890</a>
+                    <a href="mailto:john.smith@balmain.rotodia.dev" class="kontak-item">✉️ john.smith@balmain.rotodia.dev</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="highlight-section">
-        <div class="container">
-            <h2>A simpler way to live. Do less, better.</h2>
-            <p class="lead-text" style="margin: 0 auto;">Reduce your footprint without sacrificing what's important. The basics, elevated.</p>
+    <!-- SECTION 2: FORMULIR KONTAK -->
+    <section id="form-section" class="section section-dark">
+        <div class="form-container">
+            <h2>Interested in Balmain?</h2>
+            <p>Fill in the form below to share your interest. We will contact you with next steps.</p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <textarea rows="4" placeholder="Tell us about your dream home..."></textarea>
+                </div>
+                <button type="submit">Send Inquiry</button>
+            </form>
         </div>
     </section>
-
-    <section id="gallery" class="section section-light">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <div class="section-label">Visual Gallery</div>
-                <h2>Sleep under the stars</h2>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-                <div class="gallery-item"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section section-white">
-        <div class="container">
-            <div class="form-container">
-                <div class="section-label">Interested in Balmain?</div>
-                <h2>Let's chat.</h2>
-                <p style="margin-bottom: 2rem; color: #4A4A4A;">Fill in the form below to share your interest. We will contact you with next steps.</p>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" placeholder="Phone Number">
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="4" placeholder="Tell us about your dream home..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; cursor: pointer;">Send Inquiry</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="footer-logo">BALMAIN</div>
-                    <p style="font-size: 0.875rem;">Let the wild in.<br>Find your Base.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Explore</h4>
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#features">Features</a>
-                    <a href="#gallery">Gallery</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Connect</h4>
-                    <a href="#">Instagram</a>
-                    <a href="#">Facebook</a>
-                    <a href="#">LinkedIn</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Contact</h4>
-                    <a href="#">hello@balmain.rotodia.dev</a>
-                    <a href="#">+62 812 3456 7890</a>
-                    <a href="#">Balmain Ave, Rotodia</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 Balmain Residence. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        // Smooth scroll untuk jumplink
+        document.querySelectorAll('.jumplink a').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
+
+        // Form handling sederhana
         document.getElementById('contactForm')?.addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Thank you! Our team will contact you shortly.');
