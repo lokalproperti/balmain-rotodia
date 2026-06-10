@@ -3,581 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balmain Residence - Luxury Property</title>
+    <title>Balmain Residence - Let the wild in. Find your Base.</title>
     <style>
-        /* --- VARIABEL WARNA PASTEL --- */
-        :root {
-            --bg-primary: #FFFDF8;        /* Putih hangat seperti kertas */
-            --bg-secondary: #F5F0EB;       /* Krem pastel */
-            --text-primary: #3D3A36;       /* Coklat keabu-abuan */
-            --text-secondary: #7A6F64;      /* Abu-abu hangat */
-            --accent-pink: #F3D9DC;         /* Pink pastel */
-            --accent-mint: #D7E8E0;         /* Mint pastel */
-            --accent-lavender: #E3DFF2;     /* Lavender pastel */
-            --accent-peach: #FBE9E0;        /* Peach pastel */
-            --accent-sage: #DDE8DF;         /* Sage green */
-            --gold-soft: #D4C5A9;           /* Soft gold untuk aksen minor */
-            --white: #FFFFFF;
-            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Cormorant Garamond', serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-
-        h1, h2, h3, h4, .logo, .nav-link {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- NAVIGATION --- */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 253, 248, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-secondary);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 40px;
-        }
-
-        .hero-badge {
-            font-size: 1rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 40px;
-            background: var(--text-primary);
-            color: var(--bg-primary);
-            text-decoration: none;
-            border-radius: 40px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid var(--text-primary);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: var(--text-primary);
-            transform: translateY(-2px);
-        }
-
-        /* --- ABOUT SECTION --- */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 50px;
-            color: var(--text-primary);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        .about-text .signature {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-top: 30px;
-            color: var(--text-primary);
-        }
-
-        .about-image {
-            background: var(--accent-peach);
-            border-radius: 30px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .about-image .placeholder {
-            font-size: 6rem;
-            opacity: 0.5;
-        }
-
-        /* --- FEATURES GRID --- */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .feature-card:nth-child(1) .feature-icon { background: var(--accent-peach); width: 70px; height: 70px; line-height: 70px; border-radius: 50%; margin: 0 auto 20px; }
-        .feature-card:nth-child(2) .feature-icon { background: var(--accent-mint); width: 70px; height: 70px; line-height: 70px; border-radius: 50%; margin: 0 auto 20px; }
-        .feature-card:nth-child(3) .feature-icon { background: var(--accent-lavender); width: 70px; height: 70px; line-height: 70px; border-radius: 50%; margin: 0 auto 20px; }
-        .feature-card:nth-child(4) .feature-icon { background: var(--accent-sage); width: 70px; height: 70px; line-height: 70px; border-radius: 50%; margin: 0 auto 20px; }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-        }
-
-        /* --- GALLERY SECTION --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .gallery-item {
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.02);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .gallery-item .placeholder {
-            font-size: 3rem;
-            opacity: 0.4;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .placeholder {
-            transform: scale(1.1);
-        }
-
-        .gallery-item:nth-child(1) { background: var(--accent-peach); }
-        .gallery-item:nth-child(2) { background: var(--accent-mint); }
-        .gallery-item:nth-child(3) { background: var(--accent-lavender); }
-
-        /* --- CONTACT SECTION --- */
-        .contact-section {
-            background: var(--bg-secondary);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-info p {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-        }
-
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .contact-detail .icon {
-            width: 50px;
-            height: 50px;
-            background: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 1rem;
-            background: var(--white);
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--text-secondary);
-            box-shadow: 0 0 0 3px rgba(122, 111, 100, 0.1);
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 14px;
-            background: var(--text-primary);
-            color: var(--white);
-            border: none;
-            border-radius: 40px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .btn-submit:hover {
-            background: var(--text-secondary);
-            transform: translateY(-2px);
-        }
-
-        /* --- FOOTER --- */
-        .footer {
-            background: var(--white);
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            color: var(--text-secondary);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--text-primary);
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">BALMAIN<span> Residence</span></a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">Since 2024</div>
-            <h1>Where Luxury<br>Meets Serenity</h1>
-            <p>Experience the pinnacle of refined living at Balmain Residence. A sanctuary crafted for those who appreciate timeless elegance.</p>
-            <a href="#contact" class="btn">Inquire Now</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Balmain</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>Nestled in the heart of Rotodia's most prestigious neighborhood, Balmain Residence represents the perfect harmony between architectural excellence and natural beauty.</p>
-                    <p>Every detail has been meticulously curated - from the imported marble finishes to the panoramic city views. Here, luxury isn't just seen; it's felt in every moment of your daily life.</p>
-                    <p>Designed by world-renowned architects, Balmain offers an exclusive collection of residences that redefine modern living while maintaining timeless sophistication.</p>
-                    <div class="signature">— Balmain Heritage</div>
-                </div>
-                <div class="about-image">
-                    <div class="placeholder">🪴</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="section" style="background: var(--bg-secondary);">
-        <div class="container">
-            <h2 class="section-title">Premium Amenities</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🏊</div>
-                    <h3>Infinity Pool</h3>
-                    <p>Overlooking the skyline, our heated infinity pool offers an unparalleled swimming experience.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💪</div>
-                    <h3>Wellness Center</h3>
-                    <p>State-of-the-art fitness facility with personal training and spa treatment rooms.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>24/7 Security</h3>
-                    <p>Round-the-clock surveillance and dedicated concierge for your complete peace of mind.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚗</div>
-                    <h3>Private Parking</h3>
-                    <p>Secure, designated parking spaces with EV charging stations for residents.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="section">
-        <div class="container">
-            <h2 class="section-title">Visual Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="placeholder">🏡</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="placeholder">🌿</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="placeholder">✨</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <h2 class="section-title">Request Information</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>Our team is ready to assist you with any inquiries about Balmain Residence.</p>
-                    <div class="contact-detail">
-                        <div class="icon">📍</div>
-                        <div>Balmain Avenue, Rotodia 12345</div>
-                    </div>
-                    <div class="contact-detail">
-                        <div class="icon">📞</div>
-                        <div>+62 812 3456 7890</div>
-                    </div>
-                    <div class="contact-detail">
-                        <div class="icon">✉️</div>
-                        <div>hello@balmain.rotodia.dev</div>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" placeholder="Phone Number">
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="4" placeholder="Your message..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Send Inquiry</button>
-                </form>
-            </div>
-        </div>
-    </section><!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balmain Residence - Luxury Property Portfolio</title>
-    <style>
-        /* --- VARIABEL WARNA (Natural & Earthy) --- */
-        :root {
-            --color-white: #FFFFFF;
-            --color-off-white: #F9F9F9;
-            --color-light-gray: #F0F0F0;
-            --color-mid-gray: #D4D4D4;
-            --color-dark-gray: #2A2A2A;
-            --color-charcoal: #1A1A1A;
-            --color-sage: #9CAF88;
-            --color-sage-dark: #7A8F64;
-            --color-warm-beige: #F5F0E8;
-            --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s ease;
-        }
-
+        /* --- Base Habitation Inspired --- */
         * {
             margin: 0;
             padding: 0;
@@ -586,385 +14,359 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: var(--color-white);
-            color: var(--color-dark-gray);
-            line-height: 1.6;
+            background-color: #FFFFFF;
+            color: #1A1A1A;
+            line-height: 1.5;
             scroll-behavior: smooth;
         }
 
+        /* Container like Base Habitation - wide, breathable */
         .container {
-            max-width: 1280px;
+            max-width: 1440px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 80px;
         }
 
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3 {
-            font-family: 'Inter', sans-serif;
+        /* Typography - Clean, layered */
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #8B8B8B;
+            margin-bottom: 1rem;
             font-weight: 500;
-            letter-spacing: -0.02em;
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
+            font-weight: 500;
             line-height: 1.1;
-            margin-bottom: 24px;
-            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            color: #1A1A1A;
         }
 
         h2 {
-            font-size: 2.5rem;
-            margin-bottom: 48px;
+            font-size: 2.8rem;
             font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
         }
 
         h3 {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-            font-weight: 500;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
         }
 
-        .section-subtitle {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--color-sage);
-            margin-bottom: 16px;
-            font-weight: 500;
+        .lead-text {
+            font-size: 1.125rem;
+            color: #4A4A4A;
+            line-height: 1.6;
+            max-width: 600px;
         }
 
-        /* --- BUTTONS --- */
+        /* Buttons - Minimal, border, subtle */
         .btn-primary {
             display: inline-block;
-            background-color: var(--color-charcoal);
-            color: var(--color-white);
-            padding: 14px 32px;
+            background-color: #1A1A1A;
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 2rem;
             text-decoration: none;
-            border-radius: 40px;
             font-weight: 500;
-            transition: var(--transition);
-            border: 1px solid var(--color-charcoal);
+            transition: all 0.2s ease;
+            border: 1px solid #1A1A1A;
         }
 
         .btn-primary:hover {
             background-color: transparent;
-            color: var(--color-charcoal);
+            color: #1A1A1A;
         }
 
         .btn-outline {
             display: inline-block;
             background-color: transparent;
-            color: var(--color-charcoal);
-            padding: 14px 32px;
+            color: #1A1A1A;
+            padding: 0.875rem 2rem;
+            border-radius: 2rem;
             text-decoration: none;
-            border-radius: 40px;
             font-weight: 500;
-            transition: var(--transition);
-            border: 1px solid var(--color-charcoal);
+            transition: all 0.2s ease;
+            border: 1px solid #1A1A1A;
         }
 
         .btn-outline:hover {
-            background-color: var(--color-charcoal);
-            color: var(--color-white);
+            background-color: #1A1A1A;
+            color: white;
         }
 
-        /* --- NAVIGATION --- */
+        /* Navigation - Clean, transparent, sticky */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
             z-index: 1000;
-            padding: 20px 0;
+            padding: 1.25rem 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .nav-container {
-            max-width: 1280px;
+            max-width: 1440px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.25rem;
+            font-weight: 500;
             letter-spacing: -0.02em;
-            color: var(--color-charcoal);
+            color: #1A1A1A;
             text-decoration: none;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--color-dark-gray);
+            color: #1A1A1A;
+            font-size: 0.875rem;
             font-weight: 500;
-            transition: var(--transition);
+            transition: opacity 0.2s;
         }
 
         .nav-links a:hover {
-            color: var(--color-sage);
+            opacity: 0.6;
         }
 
-        /* --- HERO SECTION --- */
+        /* Hero Section - Two column, spacious */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, var(--color-off-white) 0%, var(--color-white) 100%);
-            padding-top: 80px;
+            padding: 120px 0 80px;
         }
 
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 4rem;
             align-items: center;
-        }
-
-        .hero-badge {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--color-sage);
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.125rem;
-            color: #666;
-            margin-bottom: 32px;
-            max-width: 90%;
         }
 
         .hero-image {
-            background-color: var(--color-warm-beige);
-            height: 500px;
+            background-color: #E8E3DB;
+            height: 550px;
             border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%239E8F7E"><path d="M12 3L3 9l9 6 9-6-9-6zM3 15l9 6 9-6"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 80px;
+            background-blend-mode: overlay;
         }
 
-        /* --- SECTION UMUM --- */
+        /* Section spacing - generous, breathing */
         .section {
             padding: 100px 0;
         }
 
         .section-light {
-            background-color: var(--color-off-white);
+            background-color: #FAFAFA;
         }
 
         .section-white {
-            background-color: var(--color-white);
+            background-color: #FFFFFF;
         }
 
-        /* --- GRID FITUR (3 KOLOM) --- */
-        .features-grid {
+        /* 3-Column Grid for Features */
+        .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
+            gap: 3rem;
+            margin-top: 3rem;
         }
 
-        .feature-card {
-            text-align: center;
+        .feature-item {
+            text-align: left;
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 24px;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .feature-card h3 {
-            margin-bottom: 12px;
+        .feature-item p {
+            color: #4A4A4A;
+            font-size: 0.9375rem;
+            line-height: 1.5;
         }
 
-        .feature-card p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        /* --- GRID 2 KOLOM (Untuk About/Why) --- */
-        .two-col-grid {
+        /* 2-Column Alternating Grid */
+        .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 4rem;
             align-items: center;
         }
 
         .image-placeholder {
-            background-color: var(--color-warm-beige);
+            background-color: #E8E3DB;
+            height: 450px;
             border-radius: 24px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
         }
 
-        /* --- GALLERY GRID --- */
+        /* Quote / Highlight section */
+        .highlight-section {
+            background-color: #F5F2EF;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .highlight-section h2 {
+            max-width: 800px;
+            margin: 0 auto 1rem;
+        }
+
+        /* Gallery Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .gallery-item {
-            background-color: var(--color-light-gray);
-            border-radius: 20px;
+            background-color: #E8E3DB;
             height: 320px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            transition: var(--transition);
-            cursor: pointer;
+            border-radius: 20px;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.02);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* --- FORM SECTION --- */
+        /* Form Section - Centered, minimal */
         .form-container {
-            max-width: 600px;
+            max-width: 580px;
             margin: 0 auto;
             text-align: center;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
             text-align: left;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 14px 18px;
-            border: 1px solid var(--color-mid-gray);
+            padding: 1rem;
+            border: 1px solid #D4D4D4;
             border-radius: 12px;
             font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
+            font-size: 0.9375rem;
+            transition: all 0.2s;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--color-sage);
+            border-color: #1A1A1A;
         }
 
-        /* --- FOOTER --- */
+        /* Footer */
         .footer {
-            background-color: var(--color-charcoal);
-            color: var(--color-white);
+            background-color: #1A1A1A;
+            color: #CCCCCC;
             padding: 60px 0 40px;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
         }
 
         .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 16px;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: white;
         }
 
         .footer-links h4 {
-            margin-bottom: 20px;
-            font-size: 1rem;
+            color: white;
+            font-size: 0.875rem;
+            margin-bottom: 1.25rem;
         }
 
         .footer-links a {
             display: block;
-            color: #aaa;
+            color: #999;
             text-decoration: none;
-            margin-bottom: 12px;
-            transition: var(--transition);
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
         }
 
         .footer-links a:hover {
-            color: var(--color-white);
+            color: white;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.875rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
         }
 
-        /* --- RESPONSIVE --- */
+        /* Responsive */
         @media (max-width: 1024px) {
-            .container {
-                padding: 0 24px;
+            .container, .nav-container {
+                padding: 0 40px;
             }
-            
-            h1 {
-                font-size: 3rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .features-grid,
-            .gallery-grid {
-                gap: 24px;
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.2rem; }
+            .grid-3, .gallery-grid {
+                gap: 1.5rem;
             }
         }
 
         @media (max-width: 768px) {
+            .container, .nav-container {
+                padding: 0 24px;
+            }
             .nav-links {
                 display: none;
             }
-            
-            .hero-grid,
-            .two-col-grid {
+            .hero-grid, .grid-2, .footer-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 2rem;
             }
-            
-            .hero p {
-                max-width: 100%;
+            .hero-image {
+                height: 350px;
             }
-            
-            .features-grid,
-            .gallery-grid {
+            .grid-3, .gallery-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            
             .section {
                 padding: 60px 0;
             }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">BALMAIN</a>
@@ -978,127 +380,106 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-badge">Balmain Residence</div>
-                    <h1>Dream big.<br>Live simple.</h1>
-                    <p>Luxury redefined in every detail. A sanctuary crafted for those who appreciate timeless elegance and natural harmony.</p>
+                <div>
+                    <div class="section-label">Balmain Residence</div>
+                    <h1>Let the wild in.<br>Find your Base.</h1>
+                    <p class="lead-text" style="margin-bottom: 2rem;">Luxury redefined. A sanctuary where modern elegance meets natural serenity.</p>
                     <a href="#contact" class="btn-primary">Inquire Now</a>
                 </div>
-                <div class="hero-image">
-                    🏡
-                </div>
+                <div class="hero-image"></div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section section-light">
         <div class="container">
-            <div class="two-col-grid">
-                <div class="image-placeholder">
-                    🌿
-                </div>
+            <div class="grid-2">
                 <div>
-                    <div class="section-subtitle">Our Philosophy</div>
-                    <h2>Where luxury meets serenity</h2>
-                    <p style="margin-bottom: 20px;">Nestled in the heart of Rotodia's most prestigious neighborhood, Balmain Residence represents the perfect harmony between architectural excellence and natural beauty.</p>
-                    <p style="margin-bottom: 20px;">Every detail has been meticulously curated - from the imported marble finishes to the panoramic city views. Here, luxury isn't just seen; it's felt in every moment of your daily life.</p>
-                    <p>Designed by world-renowned architects, Balmain offers an exclusive collection of residences that redefine modern living while maintaining timeless sophistication.</p>
+                    <div class="section-label">Our Philosophy</div>
+                    <h2>Dream big.<br>Live simple.</h2>
+                    <p class="lead-text">We believe in doing a lot with a little. A return to the basics for simpler, better living.</p>
+                    <p style="margin-top: 1.5rem; color: #4A4A4A;">Balmain Residence represents the perfect harmony between architectural excellence and natural beauty. Every detail curated, from imported marble finishes to panoramic city views.</p>
                 </div>
+                <div class="image-placeholder"></div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section (3 Columns) -->
     <section id="features" class="section section-white">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <div class="section-subtitle">Premium Amenities</div>
-                <h2>Your space, your story</h2>
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="section-label">Premium Amenities</div>
+                <h2>Your space, your story.</h2>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
+            <div class="grid-3">
+                <div class="feature-item">
                     <div class="feature-icon">🏊</div>
                     <h3>Infinity Pool</h3>
-                    <p>Overlooking the skyline, our heated infinity pool offers an unparalleled swimming experience.</p>
+                    <p>Overlooking the skyline. Heated, with panoramic views.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-item">
                     <div class="feature-icon">💪</div>
                     <h3>Wellness Center</h3>
-                    <p>State-of-the-art fitness facility with personal training and spa treatment rooms.</p>
+                    <p>State-of-the-art gym and spa treatment rooms.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-item">
                     <div class="feature-icon">🛡️</div>
                     <h3>24/7 Security</h3>
-                    <p>Round-the-clock surveillance and dedicated concierge for your complete peace of mind.</p>
+                    <p>Round-the-clock surveillance and dedicated concierge.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚗</div>
-                    <h3>Private Parking</h3>
-                    <p>Secure, designated parking spaces with EV charging stations for residents.</p>
-                </div>
-                <div class="feature-card">
+                <div class="feature-item">
                     <div class="feature-icon">🌿</div>
                     <h3>Private Garden</h3>
-                    <p>Landscaped gardens with native plants and dedicated relaxation zones.</p>
+                    <p>Landscaped gardens with native plants.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-item">
+                    <div class="feature-icon">🚗</div>
+                    <h3>Private Parking</h3>
+                    <p>Secure, designated spaces with EV charging.</p>
+                </div>
+                <div class="feature-item">
                     <div class="feature-icon">🏛️</div>
                     <h3>Concierge Service</h3>
-                    <p>Dedicated 24-hour concierge to cater to your every need and request.</p>
+                    <p>Dedicated service to cater to your every need.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <section class="highlight-section">
+        <div class="container">
+            <h2>A simpler way to live. Do less, better.</h2>
+            <p class="lead-text" style="margin: 0 auto;">Reduce your footprint without sacrificing what's important. The basics, elevated.</p>
+        </div>
+    </section>
+
     <section id="gallery" class="section section-light">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <div class="section-subtitle">Visual Gallery</div>
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div class="section-label">Visual Gallery</div>
                 <h2>Sleep under the stars</h2>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item">🏡</div>
-                <div class="gallery-item">🌅</div>
-                <div class="gallery-item">🏊</div>
-                <div class="gallery-item">🌿</div>
-                <div class="gallery-item">🛋️</div>
-                <div class="gallery-item">✨</div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section class="section section-white">
-        <div class="container">
-            <div class="two-col-grid">
-                <div>
-                    <div class="section-subtitle">Built Better</div>
-                    <h2>A simpler way to live</h2>
-                    <p style="margin-bottom: 20px;">Our residences are built with innovative materials for a robust shell and a minimalist design. With a clear budget and a predictable timeline, you get less unfortunate surprises.</p>
-                    <p>Reduce your footprint without sacrificing what's important. The basics, elevated.</p>
-                </div>
-                <div class="image-placeholder">
-                    🏗️
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact / Form Section -->
-    <section id="contact" class="section section-light">
+    <section id="contact" class="section section-white">
         <div class="container">
             <div class="form-container">
-                <div class="section-subtitle">Interested in Balmain?</div>
+                <div class="section-label">Interested in Balmain?</div>
                 <h2>Let's chat.</h2>
-                <p style="margin-bottom: 40px; color: #666;">Fill in the form below to share your interest with us. We will contact you with next steps to follow.</p>
-                
-                <form id="contactForm" style="text-align: left;">
+                <p style="margin-bottom: 2rem; color: #4A4A4A;">Fill in the form below to share your interest. We will contact you with next steps.</p>
+                <form id="contactForm">
                     <div class="form-group">
                         <input type="text" placeholder="Full Name" required>
                     </div>
@@ -1117,13 +498,12 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div>
                     <div class="footer-logo">BALMAIN</div>
-                    <p style="color: #aaa; margin-top: 8px;">Luxury redefined<br>in every detail.</p>
+                    <p style="font-size: 0.875rem;">Let the wild in.<br>Find your Base.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Explore</h4>
@@ -1137,53 +517,33 @@
                     <a href="#">Instagram</a>
                     <a href="#">Facebook</a>
                     <a href="#">LinkedIn</a>
-                    <a href="#">X</a>
                 </div>
                 <div class="footer-links">
                     <h4>Contact</h4>
                     <a href="#">hello@balmain.rotodia.dev</a>
                     <a href="#">+62 812 3456 7890</a>
-                    <a href="#">Balmain Avenue, Rotodia</a>
+                    <a href="#">Balmain Ave, Rotodia</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2026 Balmain Residence. All rights reserved. Designed for timeless elegance.</p>
+                <p>© 2026 Balmain Residence. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll untuk navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
-
-        // Simple form handling
         document.getElementById('contactForm')?.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your interest! Our team will contact you shortly.');
+            alert('Thank you! Our team will contact you shortly.');
             this.reset();
         });
     </script>
-</body>
-</html>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="social-links">
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">X</a>
-        </div>
-        <p>© 2026 Balmain Residence. All rights reserved. Designed with 🤍 for timeless elegance.</p>
-    </footer>
-
 </body>
 </html>
