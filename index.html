@@ -137,37 +137,6 @@
     </style>
 </head>
 <body class="bg-bg text-text-primary font-sans font-light antialiased overflow-x-hidden leading-[1.6]">
-
-    <!-- Navigation -->
-    <nav class="fixed right-8 top-1/2 -translate-y-1/2 z-[1000] flex flex-col gap-6 md:flex-col flex-row md:bottom-auto md:right-8 bottom-4 right-4 md:transform-none">
-        <button onclick="scrollToSection('hero')" class="nav-btn p-2 nav-item flex items-center justify-center cursor-pointer transition-all duration-300 active:bg-accent active:border-accent group relative" data-target="hero">
-            <svg class="w-7 h-7 stroke-[#23314d] transition-stroke duration-300 active:stroke-white" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            <span class="absolute right-14 bg-text-primary text-white px-4 py-2 rounded-[6px] text-[12px] uppercase tracking-wider opacity-0 pointer-events-none transition-opacity duration-200 group-hover:opacity-100 whitespace-nowrap hidden md:block">Home</span>
-        </button>
-        
-        <button onclick="scrollToSection('agent')" class="nav-btn p-2 nav-item flex items-center justify-center cursor-pointer transition-all duration-300 active:bg-accent active:border-accent group relative" data-target="agent">
-            <svg class="w-7 h-7 stroke-[#23314d] transition-stroke duration-300 active:stroke-white" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span class="absolute right-14 bg-text-primary text-white px-4 py-2 rounded-[6px] text-[12px] uppercase tracking-wider opacity-0 pointer-events-none transition-opacity duration-200 group-hover:opacity-100 whitespace-nowrap hidden md:block">Agent</span>
-        </button>
-        
-        <button onclick="scrollToSection('eoi')" class="nav-btn p-2 nav-item flex items-center justify-center cursor-pointer transition-all duration-300 active:bg-accent active:border-accent group relative" data-target="eoi">
-            <svg class="w-7 h-7 stroke-[#23314d] transition-stroke duration-300 active:stroke-white" viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-            </svg>
-            <span class="absolute right-14 bg-text-primary text-white px-4 py-2 rounded-[6px] text-[12px] uppercase tracking-wider opacity-0 pointer-events-none transition-opacity duration-200 group-hover:opacity-100 whitespace-nowrap hidden md:block">Offer</span>
-        </button>
-    </nav>
-
     <!-- Hero Section -->
     <section id="hero" class="min-h-screen relative flex items-end px-8 py-[120px] overflow-hidden md:px-8 md:py-[120px] px-4 py-[80px]">
         <!-- Responsive Video Background -->
